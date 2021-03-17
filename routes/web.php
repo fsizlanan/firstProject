@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+
+
+Route::get('/', 'HomeController@index')->name('index');
+
+Route::get('/about', [HomeController::class, 'about'])->name('about');  //url about
+//HomeControllers a gidip about fonksiyonu çalıştıracak. Link Oluşturuldu.
+
+Route::get('/contact', 'HomeController@contact')->name('contact'); //contact adında bir url oluşturuldu. HomeContorllera gidip contact fonksiyonunu return edecek.
+Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
